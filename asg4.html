@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <style>
+            body {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding: 10px;
+                height: 100vh;
+                margin: 0;
+                background-color: #f0f8ff; /* Light pastel blue background */
+                font-family: Arial, sans-serif;
+            }
+
+            #webgl {
+                border: 5px solid #ffb6c1; /* Pastel pink border */
+                width: 700px; /* Smaller canvas size */
+                height: 700px;
+            }
+
+            .right-panel {
+                width: 300px; /* Set the width of the right panel */
+                padding-left: 20px;
+                background-color: #fff0f5; /* Light pastel pink background for the right panel */
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+
+            .instructions {
+                margin-top: 20px;
+            }
+
+            .settings {
+                display: none;
+            }
+
+            .slider {
+                width: 100%;
+            }
+
+            .instructions h1 {
+                font-size: 1.4em;
+                color: #ff69b4; /* Pastel pink color for headings */
+            }
+
+            .instructions p, .instructions b {
+                font-size: 1.1em;
+                color: #333;
+            }
+
+            .instructions input[type="range"] {
+                margin-top: 10px;
+            }
+
+            .instructions input[type="button"] {
+                margin-top: 10px;
+                background-color: #ffb6c1; /* Light pink for buttons */
+                border: none;
+                padding: 10px;
+                color: #fff;
+                cursor: pointer;
+                border-radius: 5px;
+            }
+
+            .instructions input[type="button"]:hover {
+                background-color: #ff69b4; /* Darker pink on hover */
+            }
+
+            .instructions h2 {
+                font-size: 1.2em;
+                color: #ff69b4;
+            }
+        </style>
+    </head>
+
+    <body onload="main()">
+        <canvas id="webgl" width="700" height="700">
+            Please use a browser that supports "canvas"
+        </canvas>
+        
+        <div class="right-panel">
+            <p>Find the Jellyfish Alien Maze Game.</p>
+        
+            <p></p>
+            <input type="button" value="Switch Light On/Off" id="lightSwitch"/>
+            <p></p>
+            <input type="button" value="Turn Normal On" id="normalOn"/>
+            <input type="button" value="Turn Normal Off" id="normalOff"/>
+
+            <p></p>
+
+            Light X <input type="range" min="-25" max="25" value="0" class="slider" id="lightX"/>
+            Light Y <input type="range" min="-25" max="45" value="25" class="slider" id="lightY"/>
+            Light Z <input type="range" min="-25" max="25" value="0" class="slider" id="lightZ"/>
+            <p></p>
+
+            <div class="instructions">
+                <h1>How to Play</h1>
+                <b>Forward:</b>Up Arrow or W key<br>
+                <b>Backward:</b>Down Arrow or S key<br>
+                <b>Left:</b>Left Arrow or A key<br>
+                <b>Right:</b>Right Arrow or D key<br>
+                <b>Jump:</b>Spacebar<br>
+                <b>Come down:</b> Shift<br>
+
+                <h2>Looking Around</h2>
+                <b>Look Left:</b> Q or Click and Move Mouse Left<br>
+                <b>Look Right:</b> E or Click and Move Mouse Right<br>
+                <b>Look Up:</b> Z or Click and Move Mouse Up<br>
+                <b>Look Down:</b> X or Click Move Mouse Down<br>
+
+                <div class="settings">
+                    <h1>Settings</h1>
+                    <p>FOV: <span id="FOV"> ⛝</span><input type="range" min="30" max="120" id="FOVSlide"><br>
+                    Mouse Sensitivity: <input type="range" min="0.1" max="1.0" step="0.01" id="MouseSlide"><br>
+                    Invert X-Axis: <input type="checkbox" id="xInv"><br>
+                    Invert Y-Axis: <input type="checkbox" id="yInv"></p>
+                </div>
+            </div>
+        </div>
+
+        <script src="lib/webgl-utils.js"></script>
+        <script src="lib/webgl-debug.js"></script>
+        <script src="lib/cuon-utils.js"></script>
+        <script src="lib/cuon-matrix-cse160.js"></script>
+        <script src="Shapes.js"></script>
+        <script src="Camera.js"></script>
+        <script src="Lighted.js"></script>
+    </body>
+</html>
